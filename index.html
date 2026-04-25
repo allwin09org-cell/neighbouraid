@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>NeighbourAid</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <title>Neighbor Aid</title>
 </head>
-
 <body>
 
-<nav>
+<h2>Neighbor Aid</h2>
 
-<h2>NeighbourAid</h2>
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+<button onclick="signup()">Signup</button>
+<button onclick="login()">Login</button>
 
-<a href="login.html">Login</a>
+<h3>Post Help Request</h3>
+<input id="helpText" placeholder="Enter help needed">
+<button onclick="addRequest()">Post</button>
 
-</nav>
+<h3>All Requests</h3>
+<ul id="list"></ul>
 
-<header class="hero">
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
 
-<h1>NeighbourAid</h1>
-
-<p>Helping communities solve everyday problems</p>
-
-<a href="login.html" class="btn">Get Started</a>
-
-</header>
+<script src="app.js"></script>
 
 </body>
 </html>
