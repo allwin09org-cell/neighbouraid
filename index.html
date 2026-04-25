@@ -1,76 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Neighbor Aid</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neighbor Aid | Community Help Exchange</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<h1>Neighbor Aid</h1>
 
-<div class="card">
-  <h3>Login / Signup</h3>
-  <input id="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Password">
-  <button onclick="signup()">Signup</button>
-  <button onclick="login()">Login</button>
-</div>
+    <div id="toast-container"></div>
 
-<div class="card">
-  <h3>Post Help Request</h3>
-  <input id="helpText" placeholder="What help do you need?">
-  <button onclick="addRequest()">Post</button>
-</div>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-handshake-angle"></i>
+                <span>Neighbor<span>Aid</span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('hero')">Home</a></li>
+                <li class="auth-only"><a href="#" onclick="showSection('feed')">Requests</a></li>
+                <li class="auth-only"><button class="btn-primary" onclick="showSection('post')">Post Help</button></li>
+                <li class="guest-only"><a href="#" onclick="showSection('auth')">Login</a></li>
+                <li class="auth-only"><a href="#" id="logout-btn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<div class="card">
-  <h3>Community Requests</h3>
-  <ul id="list"></ul>
-</div>
-<h2>Neighbor Aid</h2>
+    <section id="hero-section" class="active">
+        <div class="hero-content">
+            <h1>Connecting Communities <br><span>Through Help</span></h1>
+            <p>A modern platform where neighbors support neighbors. Post a request, offer a hand, and build a stronger community together.</p>
+            <div class="hero-btns">
+                <button class="btn-primary-lg" onclick="showSection('auth')">Get Started</button>
+                <button class="btn-secondary-lg" onclick="showSection('feed')">Browse Requests</button>
+            </div>
+        </div>
+    </section>
 
-<input id="email" placeholder="Email">
-<input id="password" type="password" placeholder="Password">
-<button onclick="signup()">Signup</button>
-<button onclick="login()">Login</button>
+    <section id="auth-section">
+        <div class="auth-card">
+            <div class="auth-toggle">
+                <button id="toggle-login" class="active">Login</button>
+                <button id="toggle-signup">Sign Up</button>
+            </div>
+            <form id="auth-form">
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="auth-email" placeholder="neighbor@example.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="auth-password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-full" id="auth-submit-btn">Login</button>
+            </form>
+        </div>
+    </section>
 
-<h3>Post Help Request</h3>
-<input id="helpText" placeholder="Enter help needed">
-<button onclick="addRequest()">Post</button>
+    <section id="post-section">
+        <div class="form-container">
+            <h2>Post a Help Request</h2>
+            <form id="request-form">
+                <div class="input-group">
+                    <label>What do you need help with?</label>
+                    <input type="text" id="req-title" placeholder="e.g., Grocery shopping, Moving furniture" required>
+                </div>
+                <div class="input-group">
+                    <label>Details</label>
+                    <textarea id="req-desc" rows="4" placeholder="Describe your request in detail..." required></textarea>
+                </div>
+                <button type="submit" class="btn-full">Post Request</button>
+            </form>
+        </div>
+    </section>
 
-<h3>All Requests</h3>
-<ul id="list"></ul>
+    <section id="feed-section">
+        <div class="section-header">
+            <h2>Community Requests</h2>
+            <div id="user-welcome"></div>
+        </div>
+        <div id="loading-spinner" class="spinner"></div>
+        <div id="requests-container" class="requests-grid">
+            </div>
+        <div id="empty-state" class="hidden">
+            <i class="fa-solid fa-inbox"></i>
+            <p>No requests yet. Be the first to ask for help!</p>
+        </div>
+    </section>
 
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+    <footer>
+        <p>&copy; 2024 Neighbor Aid Platform. Built for stronger communities.</p>
+    </footer>
 
-<script src="app.js"></script>
-<style>
-body {
-  font-family: Arial;
-  background: #eef2f7;
-  padding: 20px;
-}
-
-.card {
-  background: white;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-input {
-  padding: 10px;
-  margin: 5px;
-  width: 200px;
-}
-
-button {
-  padding: 10px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
-</style>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
