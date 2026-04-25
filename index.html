@@ -4,7 +4,26 @@
   <title>Neighbor Aid</title>
 </head>
 <body>
+<h1>Neighbor Aid</h1>
 
+<div class="card">
+  <h3>Login / Signup</h3>
+  <input id="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+  <button onclick="signup()">Signup</button>
+  <button onclick="login()">Login</button>
+</div>
+
+<div class="card">
+  <h3>Post Help Request</h3>
+  <input id="helpText" placeholder="What help do you need?">
+  <button onclick="addRequest()">Post</button>
+</div>
+
+<div class="card">
+  <h3>Community Requests</h3>
+  <ul id="list"></ul>
+</div>
 <h2>Neighbor Aid</h2>
 
 <input id="email" placeholder="Email">
