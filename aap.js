@@ -20,8 +20,14 @@ import {
 
 // 🔑 PASTE YOUR FIREBASE CONFIG HERE
 const firebaseConfig = {
-  apiKey: "YOUR_KEY",
-  ...
+  apiKey: "AIzaSyBaoCqAF7s4JiOm8-rfmlkF65VJEwDA8g0",
+  authDomain: "neighbor-aid-ac5a8.firebaseapp.com",
+  databaseURL: "https://neighbor-aid-ac5a8-default-rtdb.firebaseio.com",
+  projectId: "neighbor-aid-ac5a8",
+  storageBucket: "neighbor-aid-ac5a8.firebasestorage.app",
+  messagingSenderId: "395359721520",
+  appId: "1:395359721520:web:4f0741c3b884243a9cb5f5",
+  measurementId: "G-EFYSPF0MGQ"
 };
 // INIT
 const app = initializeApp(firebaseConfig);
