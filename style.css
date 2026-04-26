@@ -1,71 +1,108 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f7fb;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
 }
 
-h2, h3 {
-  color: #333;
+/* AUTH PAGE */
+.auth-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.auth-card h1 {
+  color: #007bff;
+}
+
+.subtitle {
+  color: #777;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.primary {
+  background: #007bff;
+  color: white;
+}
+
+.primary:hover {
+  background: #0056b3;
+}
+
+.secondary {
+  background: #f1f1f1;
+}
+
+.secondary:hover {
+  background: #ddd;
+}
+
+#authMessage {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* DASHBOARD */
+header {
+  background: #007bff;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  padding: 20px;
 }
 
 .card {
   background: white;
   padding: 20px;
-  margin: 15px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #0056b3;
-}
-
-.container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.container .card {
-  flex: 1 1 300px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
 }
 
 #chatBox {
-  height: 200px;
+  height: 250px;
   overflow-y: auto;
-  border: 1px solid #ccc;
+  background: #f9f9f9;
   padding: 10px;
-  margin-bottom: 10px;
-}
-
-.hidden {
-  display: none;
-}
-
-header {
-  background: #007bff;
-  color: white;
-  padding: 15px;
-  text-align: center;
-}
-
-textarea {
-  height: 80px;
+  border-radius: 8px;
 }
