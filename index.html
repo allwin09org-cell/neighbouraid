@@ -1,126 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neighbor Aid | Community Help Exchange</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>Neighbor Aid</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo">Neighbor<span>Aid</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li class="auth-only"><a href="#requests">Requests</a></li>
-                <li class="auth-only"><a href="#chat">Community Chat</a></li>
-                <li id="auth-btn-container">
-                    <button class="btn-primary" onclick="toggleModal('auth-modal')">Login / Sign Up</button>
-                </li>
-            </ul>
-        </div>
-    </nav>
+  <div id="app">
 
-    <section id="home" class="hero">
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <h1>Connecting People. <br><span>Building Stronger Communities.</span></h1>
-                <p>A modern platform to request a hand or offer help to your neighbors in real-time.</p>
-                <div class="hero-btns">
-                    <button class="btn-primary btn-lg" onclick="scrollToSection('requests')">View Requests</button>
-                    <button class="btn-outline btn-lg" onclick="scrollToSection('chat')">Join the Chat</button>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1559027615-cd4451d131e2?auto=format&fit=crop&q=80&w=800" alt="Community Helping">
-            </div>
-        </div>
-    </section>
-
-    <main class="container main-content" id="dashboard">
-        
-        <div class="grid-layout">
-            <section id="requests" class="requests-section">
-                <div class="section-header">
-                    <h2>Help Requests</h2>
-                    <button class="btn-primary" onclick="toggleModal('request-modal')">+ Post Request</button>
-                </div>
-                
-                <div id="requests-container" class="requests-grid">
-                    <div class="loader">Loading requests...</div>
-                </div>
-            </section>
-
-            <section id="chat" class="chat-section">
-                <div class="chat-window">
-                    <div class="chat-header">Community Live Chat</div>
-                    <div id="chat-messages" class="chat-messages">
-                        </div>
-                    <form id="chat-form" class="chat-input-area">
-                        <input type="text" id="chat-input" placeholder="Type a message..." required>
-                        <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
-                    </form>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <div id="auth-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="toggleModal('auth-modal')">&times;</span>
-            <div class="auth-tabs">
-                <button id="login-tab" class="active" onclick="switchAuthMode('login')">Login</button>
-                <button id="signup-tab" onclick="switchAuthMode('signup')">Sign Up</button>
-            </div>
-            <form id="auth-form">
-                <div class="input-group">
-                    <label>Email Address</label>
-                    <input type="email" id="auth-email" required placeholder="name@example.com">
-                </div>
-                <div class="input-group">
-                    <label>Password</label>
-                    <input type="password" id="auth-password" required placeholder="••••••••">
-                </div>
-                <button type="submit" class="btn-primary btn-block" id="auth-submit-btn">Login</button>
-            </form>
-        </div>
+    <!-- Auth Section -->
+    <div id="auth-section" class="card">
+      <h2>Neighbor Aid</h2>
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="signup()">Sign Up</button>
+      <button onclick="login()">Login</button>
     </div>
 
-    <div id="request-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="toggleModal('request-modal')">&times;</span>
-            <h3>Post a Help Request</h3>
-            <form id="request-form">
-                <div class="input-group">
-                    <label>What do you need help with?</label>
-                    <textarea id="req-text" placeholder="E.g. Need help moving a couch or picking up groceries..." required></textarea>
-                </div>
-                <button type="submit" class="btn-primary btn-block">Post Request</button>
-            </form>
+    <!-- Dashboard -->
+    <div id="dashboard" class="hidden">
+
+      <header>
+        <h2>Neighbor Aid Dashboard</h2>
+        <p id="userEmail"></p>
+        <button onclick="logout()">Logout</button>
+      </header>
+
+      <div class="container">
+
+        <!-- Help Requests -->
+        <div class="card">
+          <h3>Request Help</h3>
+          <textarea id="requestInput" placeholder="Describe your need..."></textarea>
+          <button onclick="postRequest()">Post</button>
         </div>
+
+        <div class="card">
+          <h3>Community Requests</h3>
+          <div id="requestsList"></div>
+        </div>
+
+        <!-- Chat -->
+        <div class="card">
+          <h3>Community Chat</h3>
+          <div id="chatBox"></div>
+          <input id="chatInput" placeholder="Type a message...">
+          <button onclick="sendMessage()">Send</button>
+        </div>
+
+      </div>
+
     </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Neighbor Aid. Built for stronger communities.</p>
-        </div>
-    </footer>
+  </div>
 
-    <div id="toast-container"></div>
-
-    <script type="module" src="app.js"></script>
-    <script>
-        // Simple UI helpers
-        function toggleModal(id) {
-            const modal = document.getElementById(id);
-            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
-        }
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
