@@ -39,15 +39,34 @@ const authSection = document.getElementById("auth-section");
 const dashboard = document.getElementById("dashboard");
 const userEmail = document.getElementById("userEmail");
 
-// AUTH FUNCTIONS
+//const msg = document.getElementById("authMessage");
+
 window.signup = async () => {
   const email = emailInput();
   const pass = passwordInput();
+
+  if (!email || !pass) {
+    msg.innerText = "Please fill all fields";
+    msg.style.color = "red";
+    return;
+  }
+
   try {
     await createUserWithEmailAndPassword(auth, email, pass);
-    alert("Signup successful!");
+    msg.innerText = "Account created successfully!";
+    msg.style.color = "green";
   } catch (err) {
-    alert(err.message);
+    msg.innerText = err.message;
+    msg.style.color = "red";
+  }
+};
+
+window.login = async () => {
+  try {
+    await signInWithEmailAndPassword(auth, emailInput(), passwordInput());
+  } catch (err) {
+    msg.innerText = err.message;
+    msg.style.color = "red";
   }
 };
 
