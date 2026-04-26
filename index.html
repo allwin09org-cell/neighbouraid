@@ -1,67 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Neighbor Aid</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neighbor Aid - Community Help Exchange</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤝</text></svg>">
 </head>
 <body>
-
-  <div id="app">
-
-    <div id="auth-section" class="auth-container">
-  <div class="auth-card">
-    <h1>Neighbor Aid</h1>
-    <p class="subtitle">Helping communities connect 🤝</p>
-
-    <input type="email" id="email" placeholder="Enter your email">
-    <input type="password" id="password" placeholder="Enter your password">
-
-    <button class="primary" onclick="signup()">Create Account</button>
-    <button class="secondary" onclick="login()">Login</button>
-
-    <p id="authMessage"></p>
-  </div>
-</div>
-
-    <!-- Dashboard -->
-    <div id="dashboard" class="hidden">
-
-      <header>
-        <h2>Neighbor Aid Dashboard</h2>
-        <p id="userEmail"></p>
-        <button onclick="logout()">Logout</button>
-      </header>
-
-      <div class="container">
-
-        <!-- Help Requests -->
-        <div class="card">
-          <h3>Request Help</h3>
-          <textarea id="requestInput" placeholder="Describe your need..."></textarea>
-          <button onclick="postRequest()">Post</button>
-        </div>
-
-        <div class="card">
-          <h3>Community Requests</h3>
-          <div id="requestsList"></div>
-        </div>
-
-        <!-- Chat -->
-        <div class="card">
-          <h3>Community Chat</h3>
-          <div id="chatBox"></div>
-          <input id="chatInput" placeholder="Type a message...">
-          <button onclick="sendMessage()">Send</button>
-        </div>
-
-      </div>
-
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
     </div>
 
-  </div>
-
-  <script type="module" src="app.js"></script>
-</body>
-</html>
+    <!-- Auth Section -->
+    <div id="authSection" class="auth-container">
+        <div class="auth-card">
+            <div class="logo">
+                <h1>Neighbor Aid</h1>
+                <p>Connecting communities through help</p>
+            </div>
+            
+            <div id="authMessage" class="message hidden"></div>
+            
+            <form id="authForm" class="auth-form">
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="Email" required>
+                    <span class="input
