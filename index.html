@@ -10,14 +10,20 @@
 
   <div id="app">
 
-    <!-- Auth Section -->
-    <div id="auth-section" class="card">
-      <h2>Neighbor Aid</h2>
-      <input type="email" id="email" placeholder="Email">
-      <input type="password" id="password" placeholder="Password">
-      <button onclick="signup()">Sign Up</button>
-      <button onclick="login()">Login</button>
-    </div>
+    <div id="auth-section" class="auth-container">
+  <div class="auth-card">
+    <h1>Neighbor Aid</h1>
+    <p class="subtitle">Helping communities connect 🤝</p>
+
+    <input type="email" id="email" placeholder="Enter your email">
+    <input type="password" id="password" placeholder="Enter your password">
+
+    <button class="primary" onclick="signup()">Create Account</button>
+    <button class="secondary" onclick="login()">Login</button>
+
+    <p id="authMessage"></p>
+  </div>
+</div>
 
     <!-- Dashboard -->
     <div id="dashboard" class="hidden">
